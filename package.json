@@ -1,0 +1,42 @@
+{
+  "name": "KitchenSyncIP_Server",
+  "version": "1.0.0",
+  "engines": {
+    "node": "~0.12.0"
+  },
+  "scripts": {
+    "start": "node service/index.js",
+    "build": "react-scripts build"
+  },
+  "scripts-old": {
+    "start-dev": "env $(cat .env | xargs) nodemon %NODE_DEBUG_OPTION% service/index",
+    "start": "node service/index"
+  },
+  "dependencies": {
+    "async": "^1.4.0",
+    "bcrypt": "^3.0.0",
+    "body-parser": "~1.3.1",
+    "check-ip": "^1.1.1",
+    "compression": "^1.0.8",
+    "cookie-parser": "^1.3.2",
+    "dot-emc": "~0.1.2",
+    "express": "~4.1.2",
+    "express-fileupload": "^0.4.0",
+    "express-session": "^1.15.6",
+    "ip": "^1.1.5",
+    "nodemailer": "^4.4.2",
+    "nodemailer-ses-transport": "^1.2.0",
+    "nodemon": "^1.14.11",
+    "password-hash": "^1.2.2",
+    "path": "^0.12.7",
+    "pg": "~4.3.0",
+    "pngjs": "^3.3.1",
+    "prop-types": "^15.6.0",
+    "public-ip": "^2.4.0",
+    "request": "^2.36.0",
+    "uuid": "~1.4.1"
+  },
+  "devDependencies": {
+    "curlrequest": "^0.5.2"
+  }
+}

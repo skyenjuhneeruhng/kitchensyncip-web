@@ -1,0 +1,161 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		  
+		<link rel="icon" href="/img/logo.png" sizes="32x32" />
+		<link rel = "stylesheet" href = "/css/bootstrap.css">
+		<link rel = "stylesheet" href = "/css/font-awesome.min.css">
+		<link rel = "stylesheet" href = "/css/style.css">
+
+		<script type="text/javascript" src="//platform.linkedin.com/in.js">
+	        api_key: 813sjm94ki7ns1
+    	</script>
+
+		<script src="https://apis.google.com/js/api:client.js"></script>
+		<script src = "/js/jquery-3.3.1.js"></script>
+		<script src = "/js/bootstrap.js"></script>
+		<script src = "/js/custom.js"></script>
+		<title>KitchenSyncIP</title>
+	</head>
+	<body>
+		<!-- message show begin -->
+		<div class = "alert alert-danger position-fixed" style = "display : none">
+
+		</div>
+		<div class = "alert alert-success position-fixed" style = "display : none">
+
+		</div>
+		<!-- message show end -->
+		<!-- navigation begin -->
+		<nav class="navbar navbar-expand-lg navbar-light">
+			<div class = "container">
+			  	<a class="navbar-brand" href="/">
+			  		<img class = "logoimg" src = "/img/logoimg.png">
+			  	</a>
+			  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			    	<span class="navbar-toggler-icon"></span>
+			  	</button>
+
+			  	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			    	<ul class="navbar-nav mr-auto">
+				      	<li class="nav-item">
+				        	<a class="nav-link" href="/user-profile">Profile </a>
+				      	</li>
+				      	<li class="nav-item">
+				        	<a class="nav-link" href="/forum">Threads/Forum</a>
+				      	</li>
+				      	<li class="nav-item">
+				        	<a class="nav-link" href="/config">Config</a>
+				      	</li>
+				      	{{?it.user}}
+			      		{{?it.user['roleid']==1}}
+				      	<li class="nav-item">
+				        	<a class="nav-link" href="/admin">Admin</a>
+				      	</li>
+				      	{{?}}
+				      	{{?}}
+			    	</ul>
+		    		{{?it.user==undefined}}
+			    	<a class="nav-link" href = "/login">Sign in</a>
+			    	<a class="nav-link" href = "/signup">Sign up</a>
+			    	{{??}}
+			    	<a class="nav-link" href = "/logout">Sign out</a>
+			    	{{?}}
+			  	</div>
+		  	</div>
+		</nav>
+		<!-- navigation end -->
+		
+<!-- content begin-->
+		<section class = "login-bg">
+			
+			<div class = "clearfix signup-form">
+				<div class = "signup-content container-fluid">
+					<div class = "text-center">
+						<img src = "/img/logo.png" class = "logo-icon">
+					</div>
+					<h4 class = "text-center mt-3 mb-3">Get started with KitchenSyncIP</h4>
+					<div class = "row">
+						<div class = "col-sm-12 col-md-6 mt-3">
+							<div class = " text-center">
+								<small class = "text-gray">
+									Sign up with your social accounts
+								</small>
+								<!-- class="g-signin2" data-onsuccess="onSignIn" -->
+								<button id = "google-signup" class = "btn btn-danger mt-3 width-full"><span class = "fa fa-google-plus">&nbsp;</span>SIGN UP WITH GOOGLE</button>
+								<button class = "btn btn-primary mt-3 width-full" onclick = "signUpByFacebook()"><span class = "fa fa-facebook-f">&nbsp;</span>SIGN UP WITH FACEBOOK</button>
+								<button id = "linkedin_signup"  class = "btn btn-info mt-3 width-full" onclick = "signUpByLinkedin()"><span class = "fa fa-linkedin">&nbsp;</span>SIGN UP WITH LINKED IN</button>
+								<!-- linked test begin -->
+		<!-- 						<div id="linkedin_login" class = "width-full d-none">
+									<script type="in/login" data-onAuth="onLinkedInAuth">
+																
+									</script>
+								</div> -->
+								<!-- linked test end -->
+							</div>
+						</div>	
+						<div class = "col-sm-12 col-md-6 mt-3">
+							<div class = " text-center">
+								<small class = "text-gray">
+									Sign up with your email and password
+								</small>
+								<div class = "form-group">
+									<input type = "text" name = "username" placeholder="Your username" class = "mt-3 form-control">
+								</div>
+								<div class = "form-group">
+									<input type = "email" name = "email" placeholder="Your email" class = "mt-3 form-control">
+								</div>
+								<div class = "form-group">
+									<input type = "password" name = "password" placeholder="Your password" class = "mt-3 form-control">
+								</div>
+								<small>Password must consists of at least 8 letters and must contain at least one number</small>
+								<button class = "btn btn-success mt-3 width-full" onclick = "signUpByEmail()">Sign Up</button>
+							</div>
+						</div>							
+
+					</div>
+				</div>
+			</div>
+			<div class = "bg-filter">
+			</div>
+		</section>
+<!-- content end -->
+		<footer class = "pt-5">
+			<div class = "container pb-3">
+				<div class = "row">
+					<div class = "col-12 col-md-6">
+						<h5 class = "text-gray">About</h5>
+						<small class = "text-gray">KitchenSyncIP is a PC based room control system. Creating Better User Experiences Using a Dedicated Computer. Audio Visual Controls Simplified for Everyday PC-Based Use Cases</small>
+					</div>
+				</div>
+			</div>
+			<div class = "border-top pt-3  pb-3">
+				<div  class = "container">
+					<small class = "text-gray">
+						© 2018 KitchenSyncIP.
+					</small>
+				</div>
+			</div>
+		</footer>
+	</body>
+	<script>
+		var action = "signup";
+
+		/* google signup start */
+		startApp();
+
+		/* facebook signup start */
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); 
+			js.id = id;
+			js.src = "https://connect.facebook.net/en_US/sdk.js";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+
+		/* linkedin signup start */
+
+	</script>
+</html>

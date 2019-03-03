@@ -1,0 +1,114 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="icon" href="/img/logo.png" sizes="32x32" />
+		<link rel = "stylesheet" href = "/css/bootstrap.css">
+		<link rel = "stylesheet" href = "https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+		<link rel = "stylesheet" href = "/css/font-awesome.min.css">
+		<link rel = "stylesheet" href = "/css/style.css">
+		
+
+		<script src = "https://code.jquery.com/jquery-3.3.1.js"></script>
+		<script src = "https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+		<script src = "/js/bootstrap.js"></script>
+		<script src = "/js/custom.js"></script>
+		<title>KitchenSyncIP</title>
+	</head>
+	<body>
+		<!-- message show begin -->
+		<div class = "alert alert-danger position-fixed" style = "display : none">
+
+		</div>
+		<div class = "alert alert-success position-fixed" style = "display : none">
+
+		</div>
+		<!-- message show end -->
+		<!-- navigation begin -->
+		<nav class="navbar navbar-expand-lg navbar-light">
+			<div class = "container">
+			  	<a class="navbar-brand" href="/">
+			  		<img class = "logoimg" src = "/img/logoimg.png">
+			  	</a>
+			  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			    	<span class="navbar-toggler-icon"></span>
+			  	</button>
+
+			  	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			    	<ul class="navbar-nav mr-auto">
+				      	<li class="nav-item">
+				        	<a class="nav-link" href="/user-profile">Profile </a>
+				      	</li>
+				      	<li class="nav-item">
+				        	<a class="nav-link" href="/forum">Threads/Forum</a>
+				      	</li>
+				      	<li class="nav-item">
+				        	<a class="nav-link active" href="/config">Config</a>
+				      	</li>
+				      	{{?it.user}}
+			      		{{?it.user['roleid']==1}}
+				      	<li class="nav-item">
+				        	<a class="nav-link" href="/admin">Admin</a>
+				      	</li>
+				      	{{?}}
+				      	{{?}}
+			    	</ul>
+			    	{{?it.user==undefined}}
+			    	<a class="nav-link" href = "/login">Sign in</a>
+			    	<a class="nav-link" href = "/signup">Sign up</a>
+			    	{{??}}
+			    	<a class="nav-link" href = "/logout">Sign out</a>
+			    	{{?}}
+			  	</div>
+		  	</div>
+		</nav>
+		<!-- navigation end -->
+		
+<!-- content begin-->
+		<section class = "full-height-bg py-3">
+			<div class = "container">
+				<nav aria-label="breadcrumb">
+				  	<ol class="breadcrumb">
+					    <li class="breadcrumb-item"><a href="/config">Configs</a></li>
+					    <li class="breadcrumb-item"><a href="/config/show/{{=it.config['id']}}">{{=it.config['title']}}</a></li>
+				 	</ol>
+				</nav>
+
+				<div class = "mt-5 bg-light text-info p-3">
+					<div class = "clearfix">
+						<div class = "btn-group float-right">
+							<button class = "btn btn-outline-success" {{?it.config['userid']==it.user['id']}}disabled{{?}} onclick = "increaseLikes({{=it.config['id']}})"><span class = "fa fa-thumbs-o-up"></span></button>
+							<button class = "btn btn-outline-success" {{?it.config['userid']==it.user['id']}}disabled{{?}} onclick = "decreaseLikes({{=it.config['id']}})"><span class = "fa fa-thumbs-o-down"></span></button>
+						</div>
+						<div class = "float-right mr-4">
+							<span class = "text-warning fa fa-star">&nbsp;</span><span id = "configlikes" class = "text-gray">{{=it.config['likes']}}</span>
+						</div>
+					</div>
+					<pre>{{=it.config['content']}}</pre>
+				</div>
+			</div>
+		</section>
+<!-- content end -->
+		<footer class = "pt-5">
+			<div class = "container pb-3">
+				<div class = "row">
+					<div class = "col-12 col-md-6">
+						<h5 class = "text-gray">About</h5>
+						<small class = "text-gray">KitchenSyncIP is a PC based room control system. Creating Better User Experiences Using a Dedicated Computer. Audio Visual Controls Simplified for Everyday PC-Based Use Cases</small>
+					</div>
+				</div>
+			</div>
+			<div class = "border-top pt-3  pb-3">
+				<div  class = "container">
+					<small class = "text-gray">
+						© 2018 KitchenSyncIP.
+					</small>
+				</div>
+			</div>
+		</footer>
+		<script>
+		/*start datatable with sorting first element(keyword)*/
+		
+		</script>
+	</body>
+</html>

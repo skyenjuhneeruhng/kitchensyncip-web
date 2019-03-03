@@ -1,0 +1,245 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="icon" href="/img/logo.png" sizes="32x32" />
+		<link rel = "stylesheet" href = "/css/bootstrap.css">
+		<link rel = "stylesheet" href = "/css/font-awesome.min.css">
+		<link rel = "stylesheet" href = "/css/style.css">
+		
+		<script src = "/js/jquery-3.3.1.js"></script>
+		<script src = "/js/bootstrap.js"></script>
+		<script src = "/js/custom.js"></script>
+		<title>KitchenSyncIP</title>
+	</head>
+	<body>
+		<!-- message show begin -->
+		<div class = "alert alert-danger position-fixed" style = "display : none">
+
+		</div>
+		<div class = "alert alert-success position-fixed" style = "display : none">
+
+		</div>
+		<!-- message show end -->
+		<!-- navigation begin -->
+		<nav class="navbar navbar-expand-lg navbar-light">
+			<div class = "container">
+			  	<a class="navbar-brand" href="/">
+			  		<img class = "logoimg" src = "/img/logoimg.png">
+			  	</a>
+			  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			    	<span class="navbar-toggler-icon"></span>
+			  	</button>
+
+			  	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			    	<ul class="navbar-nav mr-auto">
+				      	<li class="nav-item">
+				        	<a class="nav-link" href="/user-profile">Profile </a>
+				      	</li>
+				      	<li class="nav-item">
+				        	<a class="nav-link" href="/forum">Threads/Forum</a>
+				      	</li>
+				      	<li class="nav-item">
+				        	<a class="nav-link" href="/config">Config</a>
+				      	</li>
+				      	{{?it.user}}
+			      		{{?it.user['roleid']==1}}
+				      	<li class="nav-item">
+				        	<a class="nav-link" href="/admin">Admin</a>
+				      	</li>
+				      	{{?}}
+				      	{{?}}
+			    	</ul>
+			    	{{?it.user==undefined}}
+			    	<a class="nav-link" href = "/login">Sign in</a>
+			    	<a class="nav-link" href = "/signup">Sign up</a>
+			    	{{??}}
+			    	<a class="nav-link" href = "/logout">Sign out</a>
+			    	{{?}}
+			  	</div>
+		  	</div>
+		</nav>
+		<!-- navigation end -->
+		
+<!-- content begin-->
+		<section class = "slider-section  bg-conf">
+			<div class = "container">
+				<div class = "offset-md-2 col-md-8 col-12 offset-sm-1 col-sm-10 text-center pt-200  pb-200">
+					<h1 class = "text-white">PC Based Room Control Software</h1>
+					<span class = "text-white">Easy enough for anyone to use</span>
+				</div>
+			</div>
+		</section>
+
+		<section class = "intro-section pt-100">
+			<div class = "container">
+				<h2 class = "text-center">
+					PC Based Audio Visual Controls Simplified for your Meeting Room Computer
+				</h2>
+				<div class = "row">
+					<div class = "col-12 col-md-6 pt-5">
+						<h5 class = "text-secondary content line-height-15">KitchenSyncIP was designed by audio visual professionals to create a better user experience in the modern meeting space. Today the PC is the heart of your audio visual system and KitchenSyncIP turn your PC into a automated room control system.</h5>
+						<div class = "row">
+							<div class = "col-12 col-sm-4 text-center pb-3">
+								<img class="img-fluid" alt="Responsive image" src = "/img/launch.jpg">
+								<br>
+					
+								<span class = "text-secondary">PC Based Audio Visual Control Launch Screen</span>
+							</div>
+							<div class = "col-12 col-sm-4 text-center pb-3">
+								<img class="img-fluid" alt="Responsive image" src = "/img/command.jpg">
+								<br>
+						
+								<span class = "text-secondary">PC Based Audio Visual Control Command Center</span>
+							</div>
+							<div class = "col-12 col-sm-4 text-center pb-3">
+								<img class="img-fluid" alt="Responsive image" src = "/img/manager.jpg">
+								<br>
+							
+								<span class = "text-secondary">Automated Audio Visual Control Launch Screen</span>
+							</div>
+						</div>
+					</div>
+					<div class = "col-12 col-md-6 pt-5">
+						<img class = "img-fluid" alt = "image-responsive" src = "/img/audio.jpg">
+					</div>
+				</div>
+				<div class = "row">
+					<div class = "col-12 order-md-2 col-md-6 pt-5">
+						<h5 class = "text-secondary content line-height-15">Simplify your room controls, reduce support requests and make your users happy!
+						</h5>
+						<ul class = "text-secondary ">
+							<li>
+								Allow the applications you use to automatically control your room determined by users actions and needs
+							</li>
+							<li>
+								An interface easy enough for anyone to set up
+							</li>
+							<li>
+								Designed to support a wide variety of devices and software programs using industry standards
+							</li>
+							<li>
+								Allow the applications you use to automatically control your room determined by users actions and needs
+							</li>
+							<li>
+								Automate Room Controls for Cameras, Displays, Audio, Lighting and more…
+							</li>
+							<li>
+								Allow your PC to leverage the power of existing control systems such as AMX, Crestron or Extron
+							</li>
+						</ul>
+					</div>
+					<div class = "col-12 order-md-1 col-md-6 pt-5">
+						<img class = "img-fluid" alt = "image-responsive" src = "/img/audio1.jpg">
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+		<section class = "intro-section pt-100 pb-100">
+			<div class = "container">
+				<h2 class = "text-center">
+					For Meetings That Matter
+				</h2>
+				<div class = "row">
+
+
+					<div class = "col-12 order-md-2 col-md-6 pt-5">
+						<h5 class = "text-secondary content line-height-15">Use Case: Simple Meeting Space
+						</h5>
+						<ul class = "text-secondary ">
+							<li>
+								When Skype Opens: Display Control – Set Display Volume and Source
+
+
+							</li>
+							<li>
+								When Skype Opens: Camera Control – Wake up camera and Call Preset 1
+							</li>
+							<li>
+								Designed toWhen Skype Closes: Put Camera to Sleep
+							</li>
+						</ul>
+					</div>
+					<div class = "col-12 order-md-1 col-md-6 pt-5">
+						<img class = "img-fluid" alt = "image-responsive" src = "/img/skype.jpg">
+					</div>	
+				</div>
+				<div class = "row">
+
+					<div class = "col-12 col-md-6 pt-5">
+						<h5 class = "text-secondary content line-height-15">Use Case: Simple Classroom
+						</h5>
+						<ul class = "text-secondary ">
+							<li>
+								When Powerpoint Opens: Projector Controls – Turn On, Select Source
+							</li>
+							<li>
+								When Powerpoint Opens: Audio Controls – Set Audio Levels
+
+							</li>
+							<li>
+								When Powerpoint Closes: Projector Controls – Set Delay, Turn off Projector
+
+							</li>
+							<li>
+								When Powerpoint Closes: Audio Controls – Mute Audio Levels
+							</li>
+						</ul>
+					</div>
+					<div class = "col-12 col-md-6 pt-5">
+						<img class = "img-fluid" alt = "image-responsive" src = "/img/powerpoint.jpg">
+					</div>
+				</div>
+				<div class = "row">
+
+
+					<div class = "col-12 order-md-2 col-md-6 pt-5">
+						<h5 class = "text-secondary content line-height-15">Use Case: Advanced Control Systems
+
+						</h5>
+						<ul class = "text-secondary">
+							<li>
+								When chosen application open: Projector Controls – Turn On, Select Source
+							</li>
+							<li>
+								When chosen application open: Lighting Controls – Set lighting scene
+							</li>
+							<li>
+								When chosen application open: Camera Controls – Wake Up Camera, Select Preset
+							</li>
+							<li>
+								When chosen application closes: Projector Controls – Add Delay, Turn Off
+							</li>
+							<li>
+								When chosen application closes: Lighting Controls – Add Delay, Turn Off
+							</li>
+						</ul>
+					</div>
+					<div class = "col-12 order-md-1 col-md-6 pt-5">
+						<img class = "img-fluid" alt = "image-responsive" src = "/img/software.jpg">
+					</div>	
+				</div>
+			</div>
+		</section>
+<!-- content end -->
+		<footer class = "pt-5">
+			<div class = "container pb-3">
+				<div class = "row">
+					<div class = "col-12 col-md-6">
+						<h5 class = "text-gray">About</h5>
+						<small class = "text-gray">KitchenSyncIP is a PC based room control system. Creating Better User Experiences Using a Dedicated Computer. Audio Visual Controls Simplified for Everyday PC-Based Use Cases</small>
+					</div>
+				</div>
+			</div>
+			<div class = "border-top pt-3  pb-3">
+				<div  class = "container">
+					<small class = "text-gray">
+						© 2018 KitchenSyncIP.
+					</small>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>

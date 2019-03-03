@@ -1,0 +1,170 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="icon" href="/img/logo.png" sizes="32x32" />
+		<link rel = "stylesheet" href = "/css/bootstrap.css">
+		<link rel = "stylesheet" href = "https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+		<link rel = "stylesheet" href = "/css/font-awesome.min.css">
+		<link rel = "stylesheet" href = "/css/style.css">
+		
+
+		<script src = "https://code.jquery.com/jquery-3.3.1.js"></script>
+		<script src = "https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+		<script src = "/js/bootstrap.js"></script>
+		<script src = "/js/custom.js"></script>
+		<title>KitchenSyncIP</title>
+	</head>
+	<body>
+		<!-- message show begin -->
+		<div class = "alert alert-danger position-fixed" style = "display : none">
+
+		</div>
+		<div class = "alert alert-success position-fixed" style = "display : none">
+
+		</div>
+		<!-- message show end -->
+		<!-- navigation begin -->
+		<nav class="navbar navbar-expand-lg navbar-light">
+			<div class = "container">
+			  	<a class="navbar-brand" href="/">
+			  		<img class = "logoimg" src = "/img/logoimg.png">
+			  	</a>
+			  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			    	<span class="navbar-toggler-icon"></span>
+			  	</button>
+
+			  	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			    	<ul class="navbar-nav mr-auto">
+				      	<li class="nav-item">
+				        	<a class="nav-link" href="/user-profile">Profile </a>
+				      	</li>
+				      	<li class="nav-item">
+				        	<a class="nav-link" href="/forum">Threads/Forum</a>
+				      	</li>
+				      	<li class="nav-item">
+				        	<a class="nav-link active" href="/config">Config</a>
+				      	</li>
+				      	{{?it.user}}
+			      		{{?it.user['roleid']==1}}
+				      	<li class="nav-item">
+				        	<a class="nav-link" href="/admin">Admin</a>
+				      	</li>
+				      	{{?}}
+				      	{{?}}
+			    	</ul>
+			    	{{?it.user==undefined}}
+			    	<a class="nav-link" href = "/login">Sign in</a>
+			    	<a class="nav-link" href = "/signup">Sign up</a>
+			    	{{??}}
+			    	<a class="nav-link" href = "/logout">Sign out</a>
+			    	{{?}}
+			  	</div>
+		  	</div>
+		</nav>
+		<!-- navigation end -->
+		
+<!-- content begin-->
+		<section class = "full-height-bg py-3">
+			<div class = "container">
+				<nav aria-label="breadcrumb">
+				  	<ol class="breadcrumb">
+					    <li class="breadcrumb-item"><a href="/config">Configs</a></li>
+				 	</ol>
+				</nav>
+
+				<!-- pagination begin -->
+  				<div class = "clearfix text-center">
+					<div class = "input-group mb-3">
+						<input class = "form-control" placeholder="Search..." name = "searchkey" value = "{{=it.searchkey}}">
+						<div class = "input-group-append">
+							<button  class = "btn btn-outline-secondary" onclick = "goSearchKeyword()"><span class = "fa fa-search"></span></button>
+						</div>
+					</div>
+		
+					<div class = "btn-group mb-3">
+						<button class = "btn btn-outline-secondary" onclick = "goFirst()">&lt;&lt;</button>
+						<button class = "btn btn-outline-secondary" onclick = "goPrev()">&lt;</button>
+						<button id = "paginationInfo" class = "btn btn-outline-secondary" disabled data-count = "{{=it.counts}}" data-base = "config">{{=it.offset}}</button>
+						<button class = "btn btn-outline-secondary" onclick = "goNext()">&gt;</button>
+						<button class = "btn btn-outline-secondary" onclick = "goLast()">&gt;&gt;</button>
+					</div>
+				</div>
+				<!-- pagination end -->
+				<div class = "table-responsive pt-3">
+					<table id = "configTable" class = "table table-striped table-hover">
+						<thead>
+							<tr>
+								<th>Keyword
+								</th>
+								<th>Last Updated at
+								</th>
+								<th>Created by
+								</th>
+								<th>Likes
+								</th>
+								<th>#
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							{{?it.configs.length > 0}}
+							{{~it.configs : config : i}}
+							<tr>
+								<td>
+									<a href = "/config/show/{{=config['id']}}">{{=config['title']}}</a>
+								</td>
+								<td>
+									{{=config['updated_at'].substr(0 , 16).replace("T" , " ")}}
+								</td>
+								<td>
+									{{=config['username']}}
+								</td>
+								<td>
+									{{=config['likes']}}
+								</td>
+								<td>
+									<button class = "btn btn-outline-secondary" onclick = "downloadConfig({{=config['id']}})"><span class = "fa fa-download"></span></button>
+								</td>
+							</tr>
+							{{~}}
+							{{??}}
+							<tr>
+								<td colspan="5" class = "text-center">
+									There is no configs.
+								</td>
+							</tr>
+							{{?}}
+						</tbody>
+					</table>
+				</div>
+				<hr>
+				<div class = "clearfix">
+					<a class = "float-right btn btn-dark" href = "/config/create-config">Create New Config</a>
+				</div>
+			</div>
+		</section>
+<!-- content end -->
+		<footer class = "pt-5">
+			<div class = "container pb-3">
+				<div class = "row">
+					<div class = "col-12 col-md-6">
+						<h5 class = "text-gray">About</h5>
+						<small class = "text-gray">KitchenSyncIP is a PC based room control system. Creating Better User Experiences Using a Dedicated Computer. Audio Visual Controls Simplified for Everyday PC-Based Use Cases</small>
+					</div>
+				</div>
+			</div>
+			<div class = "border-top pt-3  pb-3">
+				<div  class = "container">
+					<small class = "text-gray">
+						© 2018 KitchenSyncIP.
+					</small>
+				</div>
+			</div>
+		</footer>
+		<script>
+		/*start datatable with sorting first element(keyword)*/
+		
+		</script>
+	</body>
+</html>

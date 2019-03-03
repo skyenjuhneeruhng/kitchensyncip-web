@@ -1,0 +1,671 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="icon" href="/img/logo.png" sizes="32x32" />
+		<link rel = "stylesheet" href = "/css/bootstrap.css">
+		<link rel = "stylesheet" href = "https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+		<link rel = "stylesheet" href = "/css/font-awesome.min.css">
+		<link rel = "stylesheet" href = "/css/style.css">
+		
+
+		<script src = "https://code.jquery.com/jquery-3.3.1.js"></script>
+		<script src = "https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+		<script src = "/js/bootstrap.js"></script>
+
+		<title>KitchenSyncIP</title>
+	</head>
+	<body>
+		<!-- message show begin -->
+		<div class = "alert alert-danger position-fixed" style = "display : none">
+
+		</div>
+		<div class = "alert alert-success position-fixed" style = "display : none">
+
+		</div>
+		<!-- message show end -->
+		<!-- navigation begin -->
+		<nav class="navbar navbar-expand-lg navbar-light">
+			<div class = "container">
+			  	<a class="navbar-brand" href="/">
+			  		<img class = "logoimg" src = "/img/logoimg.png">
+			  	</a>
+			  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			    	<span class="navbar-toggler-icon"></span>
+			  	</button>
+
+			  	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			    	<ul class="navbar-nav mr-auto">
+				      	<li class="nav-item">
+				        	<a class="nav-link" href="/user-profile">Profile </a>
+				      	</li>
+				      	<li class="nav-item">
+				        	<a class="nav-link" href="/forum">Threads/Forum</a>
+				      	</li>
+				      	<li class="nav-item">
+				        	<a class="nav-link active" href="/config">Config</a>
+				      	</li>
+				      	{{?it.user}}
+			      		{{?it.user['roleid']==1}}
+				      	<li class="nav-item">
+				        	<a class="nav-link" href="/admin">Admin</a>
+				      	</li>
+				      	{{?}}
+				      	{{?}}
+			    	</ul>
+			    	{{?it.user==undefined}}
+			    	<a class="nav-link" href = "/login">Sign in</a>
+			    	<a class="nav-link" href = "/signup">Sign up</a>
+			    	{{??}}
+			    	<a class="nav-link" href = "/logout">Sign out</a>
+			    	{{?}}
+			  	</div>
+		  	</div>
+		</nav>
+		<!-- navigation end -->
+		
+<!-- content begin-->
+		<section class = "full-height-bg py-3">
+			<div class = "container">
+		
+				<nav aria-label="breadcrumb">
+				  	<ol class="breadcrumb">
+					    <li class="breadcrumb-item"><a href="/config">Configs</a></li>
+					    <li class="breadcrumb-item"><a href="/config/create-config">Create New Config</a></li>
+				 	</ol>
+				</nav>
+		
+
+
+				<div class = "row">
+				  	<div class="tab-list">
+					    <div class="nav flex-column nav-pills" id="v-pills-config-tab" role="tablist" aria-orientation="vertical">
+					      	<a class="nav-link active" id="v-pills-app-tab" data-toggle="pill" href="#v-pills-app" role="tab" aria-controls="v-pills-app" aria-selected="true">
+						      	<span class = "fa fa-cog">&nbsp;</span>
+						      	<span class = "tab-name">App Settings</span>
+						    </a>
+					      	<a class="nav-link" id="v-pills-entries-tab" data-toggle="pill" href="#v-pills-entries" role="tab" aria-controls="v-pills-entries" aria-selected="false">
+					      		<span class = "fa fa-book">&nbsp;</span>
+					      		<span class = "tab-name">Entries</span>
+					      	</a>
+					    </div>
+				  	</div>
+				  	<div class="tab-content-panel">
+					    <div class="tab-content" id="v-pills-config">
+					    	<!-- app settings begin -->
+					      	<div class="tab-pane fade show active" id="v-pills-app" role="tabpanel" aria-labelledby="v-pills-app-tab">
+				      			<div class="form-check mb-2">
+								  	<input class="form-check-input" type="checkbox" value="" id="runasadmincheck">
+								  	<label class="form-check-label" for="runasadmincheck">
+								    	Run as administrator
+								  	</label>
+								</div>
+								<div class="form-check mb-2">
+								  	<input class="form-check-input" type="checkbox" value="" id="runonstartupcheck">
+								  	<label class="form-check-label" for="runonstartupcheck">
+								    	Run on startup
+								  	</label>
+								</div>
+								<div class="form-check mb-2">
+								  	<input class="form-check-input" type="checkbox" value="" id="turnonlaunchcheck">
+								  	<label class="form-check-label" for="turnonlaunchcheck">
+								    	Turn on launch
+								  	</label>
+								</div>
+								<div class="form-check mb-2">
+								  	<input class="form-check-input" type="checkbox" value="" id="enablevoicesynccheck">
+								  	<label class="form-check-label" for="enablevoicesynccheck">
+								    	Enable voice sync
+								  	</label>
+								</div>
+								<div class="form-check mb-2">
+								  	<input class="form-check-input" type="checkbox" value="" id="usepasswordcheck">
+								  	<label class="form-check-label" for="usepasswordcheck">
+								    	Use password
+								  	</label>
+								</div>
+								<div class="form-check mb-2">
+								  	<input class="form-check-input" type="checkbox" value="" id="enableloggingcheck">
+								  	<label class="form-check-label" for="enableloggingcheck">
+								    	Enable logging
+								  	</label>
+								</div>
+								<div class="form-check mb-2">
+								  	<input class="form-check-input" type="checkbox" value="" id="usedefaultpathcheck">
+								  	<label class="form-check-label" for="usedefaultpathcheck">
+								    	Use default logging path
+								  	</label>
+								</div>
+								<div class = "form-group mb-2">
+									<label>Logging Path</label>
+									<input class = "form-control" name = "log_path">
+								</div>
+								<div class = "form-group mb-2">
+									<label>VS trigger word 1</label>
+									<input class = "form-control" name = "triggerword1">
+								</div>
+								<div class = "form-group mb-2">
+									<label>VS trigger word 2</label>
+									<input class = "form-control" name = "triggerword2">
+								</div>
+<!-- 								<input class = "d-none" type = "file" onchange="onappconfigfilechanged()" name = "appconfigfile">
+								<div class = "clearfix mt-3">
+									<button class = "btn btn-secondary width-full" onclick = "uploadAppSettings()">Upload App Settings</button>
+								</div> -->
+								<div class = "clearfix mt-2">
+									<button class = "btn btn-secondary width-full" onclick = "saveAppSettings()">Save App Settings</button>
+								</div>
+							</div>
+							<!-- app settings end -->
+							<!-- entries begin -->
+					      	<div class="tab-pane fade" id="v-pills-entries" role="tabpanel" aria-labelledby="v-pills-entries-tab">
+				      			<!-- entry name begin -->
+					      		<div class = "row">
+			      					<div class = "col-sm-12 col-md-6">
+				      					<div class = "form-group">
+				      						<input class = "form-control" name = "app_name" placeholder="New App Name">
+				      					</div>
+				      				</div>
+				      				<div class = "col-sm-12 col-md-6">
+						      			<button class = "btn btn-secondary width-full mb-3" onclick = "addNewEntry()">Add New Entry</button>
+				      				</div>				      				
+			      				</div>
+			      				<!-- entry name end -->
+			      				<!-- entry list begin -->
+				      			<div class = "row">
+				      				<div class = "col-sm-12 col-md-6">
+						      			<div class = "form-group">
+				      						<select class = "form-control" name = "entry_list" onchange = "entrySelected()">
+				      							<option value = ""></option>
+				      						</select>
+				      					</div>
+				      				</div>
+				      				<div class = "col-sm-12 col-md-6">
+						      			<button class = "btn btn-secondary width-full mb-2" onclick = "removeCurrentEntry()">Remove Current Entry</button>
+				      				</div>				      				
+			      				</div>
+			      				<!-- entry list end -->
+			      				<!-- entry info begin -->
+				      			<div class = "row">
+				      				<div class = "col-sm-12 col-md-6">
+
+				      					<div class = "form-group">
+				      				
+				      						<input class = "form-control" name = "group_title" placeholder="Group Title">
+				      					</div>
+				      					<div class="form-check">
+										  	<input class="form-check-input" type="checkbox" value="" id="openvscheck">
+										  	<label class="form-check-label" for="openvscheck">
+										    	Open VS
+										  	</label>
+										</div>
+										<div class = "form-group">
+											<input class = "form-control" name = "openvscmd" placeholder="Open Voice Command">
+										</div>
+										<div class="form-check">
+										  	<input class="form-check-input" type="checkbox" value="" id="closevscheck">
+										  	<label class="form-check-label" for="closevscheck">
+										    	Close VS
+										  	</label>
+										</div>
+										<div class = "form-group">
+											<input class = "form-control" name = "closevscmd" placeholder="Close Voice Command">
+										</div>
+										<button class = "btn btn-secondary width-full mb-2" onclick = "addTcpUdp()">Add TCP/UDP Command</button>
+										<button class = "btn btn-secondary width-full mb-2" onclick = "addBatchFile()">Add Batch File</button>
+										<button class = "btn btn-secondary width-full mb-2" onclick = "addHttpTrigger()">Add Http Trigger</button>
+										<button class = "btn btn-secondary width-full mb-2" onclick = "addDelay()">Add Delay(msec)</button>
+										<button class = "btn btn-secondary width-full mb-2" onclick = "addHeartbeat()">Add Heartbeat</button>
+				      				</div>
+				      				<div class = "col-sm-12 col-md-6">
+				      					<!-- commands table begin -->
+				      					<div class = "table-responsive mt-3">
+				      						<table class = "table table-striped table-hover table-sm">
+				      							<thead>
+				      								<tr>
+				      									<th>
+				      										Command Name
+				      									</th>
+				      									<th>
+				      										Remove
+				      									</th>
+				      									<th>
+				      										Edit
+				      									</th>
+				      								</tr>
+				      							</thead>
+				      							<tbody id = "commands_list">
+				      							</tbody>
+
+				      						</table>
+				      					</div>
+				      					<!-- commands table end -->
+				      				</div>
+				      			</div>
+				      			<!-- entry info end -->
+<!-- 				      			<input class = "d-none" type = "file" name = "commandsconfigfile" onchange = "oncommandsconfigfilechanged()">
+				      			<div class = "clearfix mt-3">
+					      			<button class = "btn btn-secondary width-full" onclick = "uploadEntries()">Upload Entries</button>
+	      						</div> -->
+			      				<div class = "clearfix mt-2">
+					      			<button class = "btn btn-secondary width-full" onclick = "saveEntry()">Save Entry</button>
+	      						</div>
+					      	</div>
+					      	<!-- entries end -->
+					    </div>
+
+					    <div class = "clearfix mt-3">
+					    	<button class = "btn btn-dark width-full" onclick = "saveConfig()">Save Config</button>
+					    </div>
+
+					    <input class = "d-none" type = "file" name = "loadconfigfile" onchange = "onconfigfilechanged()">
+					    <div class = "clearfix mt-3">
+			      			<button class = "btn btn-dark width-full" onclick = "loadconfigfile()">Load Config File</button>
+  						</div>
+				  	</div>
+			    </div>
+
+			</div>
+		</section>
+<!-- content end -->
+<!-- footer begin -->
+		<footer class = "pt-5">
+			<div class = "container pb-3">
+				<div class = "row">
+					<div class = "col-12 col-md-6">
+						<h5 class = "text-gray">About</h5>
+						<small class = "text-gray">KitchenSyncIP is a PC based room control system. Creating Better User Experiences Using a Dedicated Computer. Audio Visual Controls Simplified for Everyday PC-Based Use Cases</small>
+					</div>
+				</div>
+			</div>
+			<div class = "border-top pt-3  pb-3">
+				<div  class = "container">
+					<small class = "text-gray">
+						© 2018 KitchenSyncIP.
+					</small>
+				</div>
+			</div>
+		</footer>
+<!-- footer end -->
+		<!-- modals container begin -->
+		<div class = "modals-container">
+			<!-- TCP/UDP command modal begin -->
+			<div class="modal fade" tabindex="-1" role="dialog" id = "tcpudpmodal">
+			  	<div class="modal-dialog modal-dialog-centered" role="document">
+			    	<div class="modal-content">
+			      		<div class="modal-header">
+			       			<h5 class="modal-title">TCP/UDP Command</h5>
+			        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          			<span aria-hidden="true">&times;</span>
+			        		</button>
+			      		</div>
+			      		<div class="modal-body">
+			        		<div class = "form-group">
+			        			<input class = "form-control" placeholder="Enter command title" name = "tcpudp_title">
+			        		</div>
+			        		<div class = "row mb-2">
+			        			<div class = "col-6 text-center">
+			        				<div class="form-check">
+									  	<input class="form-check-input" type="radio" name="tcpudpradio" id="tcpudp_tcpradio" value="tcp" checked>
+									  	<label class="form-check-label" for="tcpudp_tcpradio">
+									    	TCP
+									  	</label>
+									</div>
+			        			</div>
+			        			<div class = "col-6 text-center">
+			        				<div class="form-check">
+									  	<input class="form-check-input" type="radio" name="tcpudpradio" id="tcpudp_udpradio" value="udp">
+									  	<label class="form-check-label" for="tcpudp_udpradio">
+									    	UDP
+									  	</label>
+									</div>
+			        			</div>
+			        		</div>
+			        		<div class = "form-group">
+			        			<input class = "form-control" placeholder="Enter ip" name = "tcpudp_ip">
+			        		</div>
+			        		<div class = "form-group">
+			        			<input class = "form-control" placeholder = "Enter port number" type = "number" name = "tcpudp_port">
+			        		</div>
+			        		<div class = "form-group">
+			        			<input class = "form-control" placeholder="Enter hex commands" name = "tcpudp_hex">
+			        		</div>
+			        		<div class = "clearfix text-center">
+			        			<small>Execute when app</small>
+			        		</div>
+			        		<div class = "row text-center mb-2">
+			        			
+			        			<div class = "col-6">
+			        				<div class="form-check">
+									  	<input class="form-check-input" type="checkbox" value="" id="tcpudp_close_check">
+									  	<label class="form-check-label" for="tcpudp_close_check">
+									    	Closes
+									  	</label>
+									</div>
+			        			</div>
+			        			<div class = "col-6">
+			        				<div class="form-check">
+									  	<input class="form-check-input" type="checkbox" value="" id="tcpudp_open_check">
+									  	<label class="form-check-label" for="tcpudp_open_check">
+									    	Opens
+									  	</label>
+									</div>
+			        			</div>
+			        		</div>
+			        		<div class = "form-group">
+			        			<input class = "form-control" placeholder="Enter NIC ip" name = "tcpudp_nic">
+			        		</div>
+			        		<div class="form-check">
+							  	<input class="form-check-input" type="checkbox" value="" id="tcpudp_vsenable_check">
+							  	<label class="form-check-label" for="tcpudp_vsenable_check">
+							    	Enable VS
+							  	</label>
+							</div>
+							<div class = "form-group">
+								<input placeholder="Enter VS command" class = "form-control" name = "tcpudp_vscmd">
+							</div>
+			      		</div>
+			      		<div class="modal-footer">
+			        		<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			        		<button type="button" class="btn btn-primary" onclick = "saveTcpUdp()">Save</button>
+			      		</div>
+			    	</div>
+			  	</div>
+			</div>
+			<!-- TCP/UDP command modal end -->
+			<!-- Batch file begin -->
+			<div class="modal fade" tabindex="-1" role="dialog" id = "batchfilemodal">
+			  	<div class="modal-dialog modal-dialog-centered" role="document">
+			    	<div class="modal-content">
+			      		<div class="modal-header">
+			       			<h5 class="modal-title">Batch File Command</h5>
+			        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          			<span aria-hidden="true">&times;</span>
+			        		</button>
+			      		</div>
+			      		<div class="modal-body">
+			        		<div class = "form-group">
+			        			<input class = "form-control" name = "batchfile_title" placeholder="Enter title">
+			        		</div>
+			        		<div class = "form-group">
+			        			<input class = "form-control" name = "batchfile_file_path" placeholder="Enter file path">
+			        		</div>
+			        		<div class = "clearfix text-center">
+			        			<small>Execute when app</small>
+			        		</div>
+			        		<div class = "row text-center mb-2">
+			        			
+			        			<div class = "col-6">
+			        				<div class="form-check">
+									  	<input class="form-check-input" type="checkbox" value="" id="batchfile_close_check">
+									  	<label class="form-check-label" for="batchfile_close_check">
+									    	Closes
+									  	</label>
+									</div>
+			        			</div>
+			        			<div class = "col-6">
+			        				<div class="form-check">
+									  	<input class="form-check-input" type="checkbox" value="" id="batchfile_open_check">
+									  	<label class="form-check-label" for="batchfile_open_check">
+									    	Opens
+									  	</label>
+									</div>
+			        			</div>
+			        		</div>
+			        		<div class="form-check">
+							  	<input class="form-check-input" type="checkbox" value="" id="batchfile_vsenable_check">
+							  	<label class="form-check-label" for="batchfile_vsenable_check">
+							    	Enable VS
+							  	</label>
+							</div>
+							<div class = "form-group">
+								<input placeholder="Enter VS command" class = "form-control" name = "batchfile_vscmd">
+							</div>
+			      		</div>
+			      		<div class="modal-footer">
+			        		<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			        		<button type="button" class="btn btn-primary"  onclick = "saveBatchFile()">Save</button>
+			      		</div>
+			    	</div>
+			  	</div>
+			</div>
+			<!-- Batch file end -->
+			<!-- Http trigger modal begin -->
+			<div class="modal fade" tabindex="-1" role="dialog" id = "httptriggermodal">
+			  	<div class="modal-dialog modal-dialog-centered" role="document">
+			    	<div class="modal-content">
+			      		<div class="modal-header">
+			       			<h5 class="modal-title">Http Trigger Command</h5>
+			        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          			<span aria-hidden="true">&times;</span>
+			        		</button>
+			      		</div>
+			      		<div class="modal-body">
+			        		<div class = "form-group">
+			        			<input class = "form-control" placeholder="Enter title" name = "httptrigger_title">
+			        		</div>
+			        		<div class = "form-group">
+			        			<input class = "form-control" placeholder="Enter url" name = "httptrigger_url">
+			        		</div>
+			        		<div class = "clearfix text-center">
+			        			<small>Execute when app</small>
+			        		</div>
+			        		<div class = "row text-center mb-2">
+			        			
+			        			<div class = "col-6">
+			        				<div class="form-check">
+									  	<input class="form-check-input" type="checkbox" value="" id="httptrigger_close_check">
+									  	<label class="form-check-label" for="httptrigger_close_check">
+									    	Closes
+									  	</label>
+									</div>
+			        			</div>
+			        			<div class = "col-6">
+			        				<div class="form-check">
+									  	<input class="form-check-input" type="checkbox" value="" id="httptrigger_open_check">
+									  	<label class="form-check-label" for="httptrigger_open_check">
+									    	Opens
+									  	</label>
+									</div>
+			        			</div>
+			        		</div>
+			        		<div class="form-check">
+							  	<input class="form-check-input" type="checkbox" value="" id="httptrigger_vsenable_check">
+							  	<label class="form-check-label" for="httptrigger_vsenable_check">
+							    	Enable VS
+							  	</label>
+							</div>
+							<div class = "form-group">
+								<input placeholder="Enter VS command" class = "form-control" name = "httptrigger_vscmd">
+							</div>
+			      		</div>
+			      		<div class="modal-footer">
+			        		<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			        		<button type="button" class="btn btn-primary" onclick = "saveHttpTrigger()">Save</button>
+			      		</div>
+			    	</div>
+			  	</div>
+			</div>
+			<!-- Http trigger modal end -->
+			<!-- Delay command modal begin -->
+			<div class="modal fade" tabindex="-1" role="dialog" id = "delaymodal">
+			  	<div class="modal-dialog modal-dialog-centered" role="document">
+			    	<div class="modal-content">
+			      		<div class="modal-header">
+			       			<h5 class="modal-title">Delay Command</h5>
+			        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          			<span aria-hidden="true">&times;</span>
+			        		</button>
+			      		</div>
+			      		<div class="modal-body">
+			        		<div class = "form-group">
+			        			<input class = "form-control" placeholder="Enter title" name = "delay_title">
+			        		</div>
+			        		<div class = "form-group">
+			        			<input class = "form-control" placeholder="Enter time in msec" type = "number" name = "delay_time">
+			        		</div>
+			        		<div class = "clearfix text-center">
+			        			<small>Execute when app</small>
+			        		</div>
+			        		<div class = "row text-center mb-2">
+			        			
+			        			<div class = "col-6">
+			        				<div class="form-check">
+									  	<input class="form-check-input" type="checkbox" value="" id="delay_close_check">
+									  	<label class="form-check-label" for="delay_close_check">
+									    	Closes
+									  	</label>
+									</div>
+			        			</div>
+			        			<div class = "col-6">
+			        				<div class="form-check">
+									  	<input class="form-check-input" type="checkbox" value="" id="delay_open_check">
+									  	<label class="form-check-label" for="delay_open_check">
+									    	Opens
+									  	</label>
+									</div>
+			        			</div>
+			        		</div>
+
+			      		</div>
+			      		<div class="modal-footer">
+			        		<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			        		<button type="button" class="btn btn-primary" onclick = "saveDelay()">Save</button>
+			      		</div>
+			    	</div>
+			  	</div>
+			</div>
+			<!-- Delay command modal end -->
+			<!-- Heartbeat modal begin -->
+			<div class="modal fade" tabindex="-1" role="dialog" id = "heartbeatmodal">
+			  	<div class="modal-dialog modal-dialog-centered" role="document">
+			    	<div class="modal-content">
+			      		<div class="modal-header">
+			       			<h5 class="modal-title">Heartbeat Command</h5>
+			        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          			<span aria-hidden="true">&times;</span>
+			        		</button>
+			      		</div>
+			      		<div class="modal-body">
+			        		<div class = "form-group">
+			        			<input class = "form-control" placeholder="Enter command title" name = "heartbeat_title">
+			        		</div>
+			        		<div class = "row mb-2">
+			        			<div class = "col-6 text-center">
+			        				<div class="form-check">
+									  	<input class="form-check-input" type="radio" name="heartbeatradio" id="heartbeat_tcpradio" value="tcp" checked>
+									  	<label class="form-check-label" for="heartbeat_tcpradio">
+									    	TCP
+									  	</label>
+									</div>
+			        			</div>
+			        			<div class = "col-6 text-center">
+			        				<div class="form-check">
+									  	<input class="form-check-input" type="radio" name="heartbeatradio" id="heartbeat_udpradio" value="udp">
+									  	<label class="form-check-label" for="heartbeat_udpradio">
+									    	UDP
+									  	</label>
+									</div>
+			        			</div>
+			        		</div>
+			        		<div class = "form-group">
+			        			<input class = "form-control" placeholder="Enter ip" name = "heartbeat_ip">
+			        		</div>
+			        		<div class = "form-group">
+			        			<input class = "form-control" placeholder = "Enter port number" type = "number" name = "heartbeat_port">
+			        		</div>
+			        		<div class = "form-group">
+			        			<input class = "form-control" placeholder="Enter hex commands" name = "heartbeat_hex">
+			        		</div>
+			        		<div class = "form-group">
+			        			<input class = "form-control" placeholder="Enter interval in msec" type = "number" name = "heartbeat_interval">
+			        		</div>
+			        		<div class = "clearfix text-center">
+			        			<small>Execute when app</small>
+			        		</div>
+			        		<div class = "row text-center mb-2">
+			        			
+			        			<div class = "col-6">
+			        				<div class="form-check">
+									  	<input class="form-check-input" type="checkbox" value="" id="heartbeat_close_check">
+									  	<label class="form-check-label" for="heartbeat_close_check">
+									    	Closes
+									  	</label>
+									</div>
+			        			</div>
+			        			<div class = "col-6">
+			        				<div class="form-check">
+									  	<input class="form-check-input" type="checkbox" value="" id="heartbeat_open_check">
+									  	<label class="form-check-label" for="heartbeat_open_check">
+									    	Opens
+									  	</label>
+									</div>
+			        			</div>
+			        		</div>
+			        		<div class = "form-group">
+			        			<input class = "form-control" placeholder="Enter NIC ip" name = "heartbeat_nic">
+			        		</div>
+	        			</div>
+			      		<div class="modal-footer">
+			        		<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			        		<button type="button" class="btn btn-primary" onclick = "saveHeartbeat()">Save</button>
+			      		</div>
+			    	</div>
+			  	</div>
+			</div>
+			<!-- Heartbeat modal end -->
+			<!-- config title begin -->
+			<div class="modal fade" tabindex="-1" role="dialog" id = "confignamemodal">
+			  	<div class="modal-dialog modal-dialog-centered" role="document">
+			    	<div class="modal-content">
+			      		<div class="modal-header">
+			       			<h5 class="modal-title">Config Title</h5>
+			        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          			<span aria-hidden="true">&times;</span>
+			        		</button>
+			      		</div>
+			      		<div class="modal-body">
+		      				<div class = "form-group">
+		      					<input class = "form-control" name = "config_title" value = "">
+		      				</div>
+			      		</div>
+			      		<div class="modal-footer">
+			        		<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			        		<button type="button" class="btn btn-info" onclick = "changeConfigTitleAndSaveConfig()">Save</button>
+			      		</div>
+			    	</div>
+			  	</div>
+			</div>
+			<!-- config title end -->
+			<!-- alert modal show-->
+			<div class="modal fade" tabindex="-1" role="dialog" id = "warningmodal">
+			  	<div class="modal-dialog modal-dialog-centered" role="document">
+			    	<div class="modal-content">
+			      		<div class="modal-header">
+			       			<h5 class="modal-title text-danger">Warning!</h5>
+			        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          			<span aria-hidden="true">&times;</span>
+			        		</button>
+			      		</div>
+			      		<div class="modal-body" id = "warningtext">
+			      			
+			      		</div>
+			      		<div class="modal-footer">
+			        		<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			      		</div>
+			    	</div>
+			  	</div>
+			</div>
+			<!-- alert modal end -->
+		</div>
+		<!-- modals container end -->
+		<script>
+			var config = {
+				arcapp_conf : {},
+				entries_conf : {},
+			};
+		</script>
+
+		<script src = "/js/custom.js"></script>
+	</body>
+</html>

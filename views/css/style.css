@@ -1,0 +1,271 @@
+*{
+
+}
+.logoimg{
+	width : 120px;
+}
+.navbar-toggler{
+	border : none!important;
+}
+.navbar a{
+	font-weight : bold;
+	padding-right : 0px;
+	padding-left : 0px;
+}
+.navbar{
+	border-bottom:solid 1px #c9c9c9;
+}
+.slider-section{
+	padding : 30px 0px;
+}
+.alert{
+	z-index : 1000;
+	width : 100%;
+	text-align : center;
+	border-radius: 0px!important;
+}
+h1{
+	font-size : 1.5em;
+	font-weight : 600;
+}
+h2{
+	font-size : 1.2em;
+	font-weight : 600;
+}
+footer{
+	background : #252525;
+}
+.slider-section span{
+	font-size : 1.3em;
+	color : #637381;
+    font-weight: 400;
+}
+.text-secondary{
+	color : #637381!important;
+}
+.navbar-toggler{
+	padding : 0.25rem;
+}
+.pt-200{
+	padding-top : 200px;
+
+}
+.pb-200{
+	padding-bottom : 200px;
+}
+.pt-100{
+	padding-top : 100px;
+}
+.pb-100{
+	padding-bottom : 100px;
+}
+.bg-conf{
+	background-image : url('/img/conference-room.jpg');
+	background-position : center;
+	background-size : cover;
+}
+.line-height-15{
+	line-height : 1.5;
+}
+ul{
+	margin : 0px;
+	padding : 20px;
+}
+.intro-section ul{
+	font-size : 14px;
+}
+.border-top{
+	border-top:solid 1px gray!important;
+}
+.text-gray{
+	color : gray!important;
+}
+.login-bg{
+	min-height : calc(100% - 283px);
+	background : url('/img/conference-room.jpg');
+	background-position : center;
+	position : relative;
+}
+.verification-success-bg{
+	min-height : calc(100% - 283px);
+	position : relative;
+}
+.bg-filter{
+	top : 0px;
+	position: absolute;
+	background : #00000080;
+	width : 100%;
+	height : 100%;
+}
+.login-form{
+	min-width: 320px;
+	width : 25%;
+	margin : 0 auto;
+	padding-top : 50px;
+	padding-bottom : 50px;
+	position : relative;
+	z-index: 100;
+}
+.signup-form{
+	min-width: 320px;
+	width : 50%;
+	margin : 0 auto;
+	padding-top : 50px;
+	padding-bottom : 50px;
+	position : relative;
+	z-index: 100;
+}
+.login-content{
+	width : 100%;
+	padding : 20px;
+	border-radius : 10px;
+	background : white;
+}
+.signup-content{
+	width : 100%;
+	padding : 20px;
+	border-radius : 10px;
+	background : white;
+}
+.font-weight-middle{
+	font-weight : 600!important;
+}
+.logo-icon{
+	width : 60px;
+}
+.width-full{
+	width : 100%;
+}
+.verify-msg{
+	margin : 0px!important;
+	position : relative;
+	padding-top : 100px;
+}
+.full-height-bg{
+	min-height : calc(100% - 283px);
+}
+.max-width-38{
+	max-width : 38px!important;
+}
+.forum-icon , .user-icon{
+	width : 30px;
+	height : 30px;
+	margin-right : 10px;
+	border-radius : 15px;
+}
+.card-header{
+	padding: 0.75rem 0.75rem; 
+}
+.keyword{
+	float : left;	
+	font-size : 12px;
+	line-height: 30px;
+	padding : 0px 5px;
+	text-decoration: underline;
+}
+.thread-rule{
+	border-radius : 5px;
+	color : white;
+	text-align : center;
+	padding : 15px;
+}
+.forum{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+textarea{
+	min-height: 200px;
+}
+
+.tab-list{
+	padding : 15px 15px;
+	width : 80px;
+	float : left;
+}
+.tab-list span{
+	line-height: 24px;
+}
+.tab-content-panel{
+	width : calc(100% - 80px);
+	float : left;
+	padding : 15px 15px;
+	padding-top : 30px;
+}
+.tab-name{
+	display : none;
+}
+.entries .nav-link{
+	color : gray;
+	line-height: 16px;
+	padding :5px 10px ;
+	font-weight: 500;
+}
+.entries .nav-link:hover{
+	color : #333;
+}
+.entries .nav-link:even{
+	background-color : #c9c9c9;
+	
+}
+.entries .nav-link.active{
+	color : black;
+	background-color : inherit;
+}
+
+.user-img{
+	width : 180px;
+	height : 180px;
+	border-radius : 90px;
+	transition : opacity 0.3s ease-in;
+	cursor : pointer;
+}
+.user-img:hover{
+	opacity : 0.7;
+}
+.tab-list ul.nav{
+	padding : 0px!important;
+}
+.tab-list ul.nav a.active{
+	color: #fff;
+    background-color: #007bff;
+    border-radius : 5px;
+}
+
+@media (min-width: 768px)
+{
+	.tab-content-panel{
+		width : calc(100% - 190px);
+	}
+	.tab-name{
+		display : inline;
+	}
+	.tab-list{
+		width : 190px;
+	}
+	.intro-section ul{
+		font-size : 18px;
+	}
+	.signup-form{
+		min-width : 640px;
+	}
+	.keyword{
+		float : right;
+	}
+}
+@media (min-width: 992px)
+{
+	.navbar a{
+	    padding-right: 0.5rem;
+	    padding-left: 0.5rem;
+	}
+	.slider-section{
+		padding : 45px 0px;
+	}
+	h1{
+		font-size : 2.25em;
+	}
+	h2{
+		font-size : 1.8em;
+	}
+}
